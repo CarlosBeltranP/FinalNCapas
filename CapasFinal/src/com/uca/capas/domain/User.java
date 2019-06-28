@@ -2,13 +2,15 @@ package com.uca.capas.domain;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 
 @Entity(name = "usuario")
 public class User {
 	
-
+	@Id
 	private String username;
+
 	private String password;
 
 	

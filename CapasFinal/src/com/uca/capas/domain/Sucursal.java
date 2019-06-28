@@ -11,17 +11,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity 
 public class Sucursal {
 	@Id
+	@GeneratedValue(generator="sucursal_code_sucursal_seq" , strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="sucursal_code_seq" , sequenceName="public.sucursal_code_sucursal_seq" , allocationSize =1)
 	private Integer codigo;
 	
+
+	@NotEmpty(message = "Nombre de sucursal requerido")
 	private String nombre;
+	@NotEmpty(message = "Dirección de local requerido")
 	private String ubicacion;
+
+	@NotNull(message = "Cantidad de mesas requerido")
 	private Integer mesas;
+
+	@NotEmpty(message = "Nombre del gerente requerido")
 	private String gerente;
+	@NotEmpty(message = "Hora de apertura requerida")
 	private String horario_a;
+	@NotEmpty(message = "Hora de cierre requerida")
 	private String horario_c;
 	
 
@@ -35,6 +48,7 @@ public class Sucursal {
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
